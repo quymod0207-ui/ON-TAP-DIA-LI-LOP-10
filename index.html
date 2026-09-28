@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ôn Tập Giữa Học Kì Địa Lí 10</title>
+<title>Ôn Tập Giữa Học Kì Địa Lí 10 - Đáp Án & Lời Giải Siêu Chi Tiết</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#020711;color:#eef7ff;font:14px Arial,sans-serif;min-height:100vh}
 canvas#bg{position:fixed;inset:0;z-index:-1}
 
-/* CSS Cho phần chọn môn học */
+/* CSS Chọn môn */
 #subject-select{
   display:flex;
   flex-direction:column;
@@ -65,14 +65,11 @@ canvas#bg{position:fixed;inset:0;z-index:-1}
   box-shadow:0 0 30px #00ff9a88;
 }
 
-/* CSS Cho phần nội dung bài học */
-#main-content{
-  display:none; /* Ẩn mặc định */
-}
+/* CSS Nội dung */
+#main-content{ display:none; }
 header{text-align:center;padding:25px 12px 12px}
-h1{font-size:clamp(25px,7vw,42px);margin:5px;color:#fff;text-shadow:0 0 18px #00dfff}
-.sub{color:#8fa9c7}
-.name{display:inline-block;margin-top:12px;padding:9px 14px;border:1px solid #24466a;border-radius:30px;background:#071322cc}
+h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00dfff}
+.name{display:inline-block;margin-top:12px;padding:9px 14px;border:1px solid #24466a;border-radius:30px;background:#071322cc;color:#00e5ff;font-weight:bold}
 .wrap{width:min(1050px,94%);margin:auto}
 .nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
 .nav button{border:0;border-radius:16px;padding:17px 7px;color:#fff;font-weight:bold;background:linear-gradient(145deg,#d32145,#690e23);cursor:pointer}
@@ -80,39 +77,35 @@ h1{font-size:clamp(25px,7vw,42px);margin:5px;color:#fff;text-shadow:0 0 18px #00
 .page{display:none;padding-bottom:45px}
 .page.on{display:block}
 .card{background:#071425dd;border:1px solid #183756;border-radius:17px;padding:15px;margin:11px 0;box-shadow:0 8px 30px #0008;backdrop-filter:blur(7px)}
-.q{font-weight:bold;line-height:1.55;margin-bottom:9px}
+.q{font-weight:bold;line-height:1.55;margin-bottom:9px;font-size:15px;color:#fff}
 .opts{display:grid;gap:6px;color:#c9d8e9}
-.opt{padding:7px 9px;border-radius:9px}
-.opt.correct{border:2px solid #ff304e;background:#ff304e18;color:#fff;box-shadow:0 0 13px #ff304e55}
+.opt{padding:8px 10px;border-radius:9px;background:#051222;border:1px solid #18334e}
+.opt.correct{border:2px solid #00ff9a;background:#00ff9a15;color:#fff;box-shadow:0 0 13px #00ff9a55;font-weight:bold}
 .row{display:flex;gap:9px;align-items:center;margin-top:10px;flex-wrap:wrap}
-.key{background:#081727;color:#fff;border:1px solid #385878;border-radius:11px;padding:7px 10px;font-size:17px;cursor:pointer}
-.key:hover{border-color:#00e5ff}
+.key{background:#081727;color:#00e5ff;border:1px solid #385878;border-radius:11px;padding:8px 12px;font-size:14px;font-weight:bold;cursor:pointer;transition:0.2s}
+.key:hover{border-color:#00e5ff;background:#0f2a47}
 .ans{display:none;color:#35ff99;font-weight:800;width:100%}
 .ans.show{display:block}
-.tf{display:flex;justify-content:space-between;gap:10px;padding:6px 0}
-.mark{font-size:19px;font-weight:900}
+.explain{margin-top:10px;padding:12px;background:#030f1ebd;border-left:4px solid #00e5ff;border-radius:0 8px 8px 0;color:#c3f3ff;font-weight:normal;font-size:13.5px;line-height:1.6}
+.explain b{color:#00ff9a}
+.tf{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #12283f}
+.mark{font-size:18px;font-weight:900}
 .t{color:#28f58e}
 .f{color:#ff4c6b}
 .iv{line-height:1.6;color:#a8efff}
-.title{border-left:5px solid #00e5ff;padding-left:10px}
+.title{border-left:5px solid #00e5ff;padding-left:10px;color:#00e5ff;margin-top:25px}
 .small{font-size:12px;color:#8ea5be}
 .chart-container{margin-top:15px;background:#030b14;border:1px solid #1f4268;border-radius:12px;padding:15px;text-align:center;overflow-x:auto}
 .chart-canvas{background:#051120;border-radius:8px;max-width:100%;height:auto}
 
-@media(max-width:768px){
-  .subject-grid{grid-template-columns:repeat(2, 1fr);}
-}
-@media(max-width:650px){
-  .nav{grid-template-columns:1fr}
-  .card{padding:12px}
-  .subject-grid{grid-template-columns:1fr;}
-}
+@media(max-width:768px){.subject-grid{grid-template-columns:repeat(2, 1fr);}}
+@media(max-width:650px){.nav{grid-template-columns:1fr}.card{padding:12px}.subject-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 <canvas id="bg"></canvas>
 
-<!-- PHẦN CHỌN MÔN HỌC -->
+<!-- MÀN HÌNH CHỌN MÔN -->
 <div id="subject-select">
   <h1>CHỌN MÔN HỌC ÔN TẬP</h1>
   <div class="subject-grid">
@@ -127,136 +120,359 @@ h1{font-size:clamp(25px,7vw,42px);margin:5px;color:#fff;text-shadow:0 0 18px #00
   </div>
 </div>
 
-<!-- PHẦN NỘI DUNG CHÍNH (GIAO DIỆN CŨ) -->
+<!-- NỘI DUNG CHÍNH -->
 <div id="main-content">
   <header>
     <h1>Ôn Tập Giữa Học Kì Địa Lí 10</h1>
-    <div class="name"><b>[ BIÊN SOẠN ĐÁP ÁN ]</b></div>
+    <div class="name">[ LỜI GIẢI CHI TIẾT 100% CÁC CÂU ]</div>
   </header>
   <main class="wrap">
     <div class="nav">
-      <button class="on" onclick="pg(1,this)">📘 PHẦN I<br><span class="small">40 câu</span></button>
+      <button class="on" onclick="pg(1,this)">📘 PHẦN I<br><span class="small">40 câu trắc nghiệm</span></button>
       <button onclick="pg(2,this)">🧩 PHẦN II + III<br><span class="small">Đúng/Sai • Trả lời ngắn</span></button>
-      <button onclick="pg(3,this)">📊 PHẦN IV<br><span class="small">Tự luận</span></button>
+      <button onclick="pg(3,this)">📊 PHẦN IV<br><span class="small">Vẽ biểu đồ tự luận</span></button>
     </div>
     <section id="p1" class="page on">
-      <h2 class="title">Phần I — Trắc nghiệm nhiều phương án</h2>
+      <h2 class="title">Phần I — Trắc nghiệm nhiều phương án (Có giải thích)</h2>
       <div id="one"></div>
     </section>
     <section id="p2" class="page">
-      <h2 class="title">Phần II — Đúng / Sai</h2>
+      <h2 class="title">Phần II — Trắc nghiệm Đúng / Sai (Giải thích từng ý)</h2>
       <div id="two"></div>
-      <h2 class="title">Phần III — Trả lời ngắn</h2>
+      <h2 class="title">Phần III — Trả lời ngắn (Bài tập tính toán từng bước)</h2>
       <div id="three"></div>
     </section>
     <section id="p3" class="page">
-      <h2 class="title">Phần IV — Tự luận</h2>
-      <h1>Chúc tụi mày ôn tốt =))</h1>
+      <h2 class="title">Phần IV — Tự luận & Vẽ biểu đồ</h2>
       <div id="four"></div>
     </section>
   </main>
 </div>
 
 <script>
-// Hàm xử lý khi chọn môn học
 function selectSubject(){
   document.getElementById('subject-select').style.display = 'none';
   document.getElementById('main-content').style.display = 'block';
   scrollTo({top:0, behavior:'smooth'});
 }
 
+// DỮ LIỆU PHẦN I: [Câu hỏi, [Các lựa chọn], Đáp án, Lời giải chi tiết]
 const Q=[
-['Phương pháp khoanh vùng cho biết',['vùng phân bố của đối tượng riêng lẻ.','số lượng của đối tượng riêng lẻ.','tính phổ biến của đối tượng riêng lẻ.','cơ cấu của đối tượng riêng lẻ.'],'A'],
-['Để thể hiện hướng di chuyển của gió trên bản đồ cần phải dùng phương pháp nào sau đây?',['Kí hiệu.','Chấm điểm.','Bản đồ biểu đồ.','Kí hiệu đường chuyển động.'],'D'],
-['Phương pháp kí hiệu dùng để thể hiện các đối tượng',['phân bố theo những điểm cụ thể.','di chuyển theo các hướng bất kì.','phân bố phân tán, lẻ tẻ, rời rạc.','tập trung thành vùng rộng lớn.'],'A'],
-['Phương pháp chấm điểm dùng để thể hiện các hiện tượng',['phân bố theo những điểm cụ thể.','di chuyển theo các hướng bất kì.','phân bố phân tán, lẻ tẻ, rời rạc.','tập trung thành vùng rộng lớn.'],'C'],
-['Để thể hiện sự phân bố dân cư trên bản đồ người ta thường dùng phương pháp',['kí hiệu.','nền chất lượng.','chấm điểm.','bản đồ - biểu đồ.'],'C'],
-['Để tính được khoảng cách thực tế của hai địa điểm trên bản đồ phải căn cứ vào',['tỉ lệ bản đồ.','các kinh tuyến.','các vĩ tuyến.','kí hiệu bản đồ.'],'A'],
-['Để xác định vị trí của một người, một vật hay một địa điểm trên bản đồ chủ yếu dựa vào',['phương hướng trên bản đồ.','hệ thống kí hiệu của bản đồ.','hệ thống kinh, vĩ tuyến.','kim chỉ hướng bắc của bản đồ.'],'C'],
-['Kí hiệu của bản đồ dùng để thể hiện',['các đối tượng địa lí trên bản đồ.','tỉ lệ của bản đồ so với thực tế.','hệ thống đường kinh, vĩ tuyến.','bảng chú giải của một bản đồ.'],'A'],
-['Muốn tìm hiểu được nội dung của bản đồ, trước hết cần phải nghiên cứu kĩ phần',['chú giải và kí hiệu.','kí hiệu và vĩ tuyến.','vĩ tuyến và kinh tuyến.','kinh tuyến và chú giải.'],'A'],
-['Trong học tập địa lí, khi sử dụng bản đồ, vấn đề cần lưu ý đầu tiên là',['chọn bản đồ phù hợp với nội dung.','đọc kĩ bảng chú giải.','xác định phương hướng trên bản đồ.','nắm được tỉ lệ bản đồ.'],'A'],
-['GPS xác định chính xác vị trí của vật thể dựa vào',['quỹ đạo chuyển động của Trái Đất.','các trạm theo dõi và quan sát.','hệ thống các vệ tinh nhân tạo.','thiết bị xử lí thông tin vật thể.'],'C'],
-['Ứng dụng phổ biến của bản đồ số trong đời sống hằng ngày là',['tìm đường đi.','lưu địa chỉ nhà.','cập nhật kiến thức.','thu phóng bản đồ.'],'A'],
-['Vật liệu cấu tạo nên vỏ Trái Đất là',['Khoáng vật và đá.','Khoáng vật và Macma.','Khoáng vật và sắt.','Đất và nước.'],'A'],
-['Bộ phận vỏ đại dương thường không có tầng đá nào?',['Tầng trầm tích.','Tầng badan.','Tầng granit.','Tầng macma.'],'C'],
-['Vỏ Trái Đất ở đại dương có độ dày khoảng',['50km.','5km.','70km.','100km.'],'B'],
-['Vỏ Trái Đất được phân ra thành hai kiểu chính là',['lớp vỏ lục địa và lớp vỏ đại dương.','lớp Manti và lớp vỏ đại dương.','lớp vỏ lục địa và lớp Manti.','thạch quyển và lớp Manti.'],'A'],
-['Đá macma được hình thành',['từ dưới sâu nóng chảy, trào lên mặt đất nguội đi.','ở nơi trũng do sự lắng tụ và nén chặt các vật liệu.','từ trầm tích bị thay đổi tính chất do nhiệt độ cao.','từ đá biến chất bị thay đổi tính chất do sức nén lớn.'],'A'],
-['Đá trầm tích được hình thành',['từ dưới sâu nóng chảy, trào lên mặt đất nguội đi.','ở nơi trũng do sự lắng tụ và nén chặt các vật liệu.','từ trầm tích bị thay đổi tính chất do nhiệt độ cao.','từ đá biến chất bị thay đổi tính chất do sức nén lớn.'],'B'],
-['Để thể hiện các mỏ than trên lãnh thổ nước ta người ta thường dùng phương pháp',['kí hiệu đường chuyển động.','vùng phân bố.','kí hiệu.','chấm điểm.'],'C'],
-['Để thể hiện số lượng đàn bò của các tỉnh ở nước ta người ta thường dùng phương pháp',['kí hiệu.','chấm điểm.','bản đồ - biểu đồ.','vùng phân bố.'],'C'],
-['Dòng biển thường được biểu hiện bằng phương pháp',['đường chuyển động.','kí hiệu.','chấm điểm.','bản đồ - biểu đồ.'],'A'],
-['Giờ quốc tế được lấy theo giờ của',['múi giờ số 0.','múi giờ số 1.','múi giờ số 23.','múi giờ số 7.'],'A'],
-['Đường chuyển ngày quốc tế được lấy theo kinh tuyến nào?',['0°.','180°.','90°T.','90°Đ.'],'B'],
-['Các địa điểm thuộc các kinh tuyến khác nhau sẽ có giờ khác nhau gọi là',['giờ múi.','giờ địa phương.','giờ quốc tế.','giờ GMT.'],'B'],
-['Lãnh thổ Việt Nam chủ yếu nằm trong múi giờ số mấy?',['5.','6.','7.','8.'],'C'],
-['Ngày nào sau đây ở vòng cực Bắc có thời gian ngày dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'B'],
-['Ngày nào sau đây ở vòng cực Nam có thời gian ngày dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'D'],
-['Ngày nào sau đây ở vòng cực Bắc có thời gian đêm dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'D'],
-['Ngày nào sau đây ở vòng cực Nam có thời gian đêm dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'B'],
-['Về mùa hạ, ở các địa điểm trên bán cầu Bắc luôn có',['ngày dài hơn đêm.','đêm dài hơn ngày.','ngày đêm bằng nhau.','toàn ngày hoặc đêm.'],'A'],
-['Về mùa đông, ở các địa điểm trên bán cầu Bắc luôn có',['ngày dài hơn đêm.','đêm dài hơn ngày.','ngày đêm bằng nhau.','toàn ngày hoặc đêm.'],'B'],
-['Bề mặt Trái Đất được chia thành 24 múi giờ, mỗi múi giờ rộng',['15 độ kinh tuyến.','16 độ kinh tuyến.','18 độ kinh tuyến.','20 độ kinh tuyến.'],'A'],
-['Khu vực có ngày, đêm kéo dài suốt 24 giờ xảy ra tại',['xích đạo đến cực.','vòng cực đến cực.','xích đạo.','chí tuyến.'],'B'],
-['Ở bán cầu Bắc, mùa nào trong năm có ngày dài hơn đêm rõ rệt nhất?',['Mùa xuân.','Mùa hạ.','Mùa thu.','Mùa đông.'],'B'],
-['Thạch quyển được hợp thành bởi lớp vỏ Trái Đất và',['phần trên của lớp Man-ti.','phần dưới của lớp Man-ti.','nhân ngoài của Trái Đất.','nhân trong của Trái Đất.'],'A'],
-['Giới hạn thạch quyển ở độ sâu khoảng',['50 km.','100 km.','150 km.','200 km.'],'B'],
-['Các mảng kiến tạo',['luôn ổn định ở một nơi.','chỉ có các mảng lục địa.','di chuyển, tiếp xúc với nhau.','chỉ có các mảng đại dương.'],'C'],
-['Mảng kiến tạo nào sau đây toàn là vỏ đại dương?',['Mảng Ấn Độ, Ô-xtrây-li-a.','Mảng Thái Bình Dương.','Mảng Phi.','Mảng Nam Mỹ.'],'B'],
-['Dãy núi Hi-ma-lay-a được hình thành do',['mảng Bắc Mĩ xô vào mảng Âu - Á.','mảng Phi xô vào mảng Âu - Á.','mảng Thái Bình Dương xô vào mảng Âu - Á.','mảng Ấn Độ - Ôxtrâylia xô vào mảng Âu - Á.'],'D'],
-['Nơi tiếp xúc giữa các mảng kiến tạo sẽ thường xuất hiện',['động đất, núi lửa.','bão.','ngập lụt.','thủy triều dâng.'],'A']
+['Phương pháp khoanh vùng cho biết',['vùng phân bố của đối tượng riêng lẻ.','số lượng của đối tượng riêng lẻ.','tính phổ biến của đối tượng riêng lẻ.','cơ cấu của đối tượng riêng lẻ.'],'A','Phương pháp khoanh vùng (khoanh khoảnh) dùng để thể hiện không gian phân bố của những đối tượng địa lí tập trung thành từng vùng diện tích riêng biệt.'],
+['Để thể hiện hướng di chuyển của gió trên bản đồ cần phải dùng phương pháp nào sau đây?',['Kí hiệu.','Chấm điểm.','Bản đồ biểu đồ.','Kí hiệu đường chuyển động.'],'D','Phương pháp kí hiệu đường chuyển động biểu hiện hướng, khối lượng và tốc độ di chuyển của các hiện tượng địa lí tự nhiên và kinh tế - xã hội (gió, dòng biển, luồng di dân...).'],
+['Phương pháp kí hiệu dùng để thể hiện các đối tượng',['phân bố theo những điểm cụ thể.','di chuyển theo các hướng bất kì.','phân bố phân tán, lẻ tẻ, rời rạc.','tập trung thành vùng rộng lớn.'],'A','Phương pháp kí hiệu đặt các kí hiệu đúng vào vị trí phân bố thực tế của đối tượng tại những điểm cụ thể (mỏ khoáng sản, hải cảng, đô thị...).'],
+['Phương pháp chấm điểm dùng để thể hiện các hiện tượng',['phân bố theo những điểm cụ thể.','di chuyển theo các hướng bất kì.','phân bố phân tán, lẻ tẻ, rời rạc.','tập trung thành vùng rộng lớn.'],'C','Phương pháp chấm điểm dùng từng chấm nhỏ (có giá trị chỉ một số lượng đối tượng nhất định) để biểu hiện sự phân bố phân tán, rời rạc (dân cư nông thôn, diện tích gieo trồng...).'],
+['Để thể hiện sự phân bố dân cư trên bản đồ người ta thường dùng phương pháp',['kí hiệu.','nền chất lượng.','chấm điểm.','bản đồ - biểu đồ.'],'C','Mỗi chấm tròn tượng trưng cho một số lượng người nhất định giúp người xem hình dung được độ dày đặc hay thưa thớt của dân cư.'],
+['Để tính được khoảng cách thực tế của hai địa điểm trên bản đồ phải căn cứ vào',['tỉ lệ bản đồ.','các kinh tuyến.','các vĩ tuyến.','kí hiệu bản đồ.'],'A','Tỉ lệ bản đồ cho biết khoảng cách trên bản đồ đã thu nhỏ bao nhiêu lần so với khoảng cách thực địa.'],
+['Để xác định vị trí của một người, một vật hay một địa điểm trên bản đồ chủ yếu dựa vào',['phương hướng trên bản đồ.','hệ thống kí hiệu của bản đồ.','hệ thống kinh, vĩ tuyến.','kim chỉ hướng bắc của bản đồ.'],'C','Giao điểm giữa kinh tuyến và vĩ tuyến tạo thành tọa độ địa lí để xác định chính xác vị trí mọi điểm.'],
+['Kí hiệu của bản đồ dùng để thể hiện',['các đối tượng địa lí trên bản đồ.','tỉ lệ của bản đồ so với thực tế.','hệ thống đường kinh, vĩ tuyến.','bảng chú giải của một bản đồ.'],'A','Kí hiệu bản đồ đóng vai trò như ngôn ngữ bản đồ, dùng thể hiện vị trí, đặc tính của các đối tượng.'],
+['Muốn tìm hiểu được nội dung của bản đồ, trước hết cần phải nghiên cứu kĩ phần',['chú giải và kí hiệu.','kí hiệu và vĩ tuyến.','vĩ tuyến và kinh tuyến.','kinh tuyến và chú giải.'],'A','Bảng chú giải chứa các kí hiệu và giải thích ý nghĩa của từng hình vẽ, màu sắc trên bản đồ.'],
+['Trong học tập địa lí, khi sử dụng bản đồ, vấn đề cần lưu ý đầu tiên là',['chọn bản đồ phù hợp với nội dung.','đọc kĩ bảng chú giải.','xác định phương hướng trên bản đồ.','nắm được tỉ lệ bản đồ.'],'A','Phải chọn đúng bản đồ liên quan đến chủ đề cần học (ví dụ: học địa hình thì dùng bản đồ tự nhiên, không chọn bản đồ hành chính).'],
+['GPS xác định chính xác vị trí của vật thể dựa vào',['quỹ đạo chuyển động của Trái Đất.','các trạm theo dõi và quan sát.','hệ thống các vệ tinh nhân tạo.','thiết bị xử lí thông tin vật thể.'],'C','Hệ thống định vị toàn cầu GPS hoạt động dựa trên các vệ tinh nhân tạo bay xoay quanh Trái Đất phát tín hiệu liên tục.'],
+['Ứng dụng phổ biến của bản đồ số trong đời sống hằng ngày là',['tìm đường đi.','lưu địa chỉ nhà.','cập nhật kiến thức.','thu phóng bản đồ.'],'A','Bản đồ số tích hợp GPS giúp người dùng định vị và chỉ đường đi (Google Maps, Grab,...).'],
+['Vật liệu cấu tạo nên vỏ Trái Đất là',['Khoáng vật và đá.','Khoáng vật và Macma.','Khoáng vật và sắt.','Đất và nước.'],'A','Vỏ Trái Đất được cấu tạo chủ yếu bởi các loại khoáng vật và 3 nhóm đá chính (macma, trầm tích, biến chất).'],
+['Bộ phận vỏ đại dương thường không có tầng đá nào?',['Tầng trầm tích.','Tầng badan.','Tầng granit.','Tầng macma.'],'C','Vỏ đại dương mỏng hơn vỏ lục địa và không có tầng đá granit (chỉ bao gồm tầng trầm tích và tầng badan).'],
+['Vỏ Trái Đất ở đại dương có độ dày khoảng',['50km.','5km.','70km.','100km.'],'B','Vỏ đại dương có độ dày trung bình từ 5 km đến 10 km (mỏng hơn nhiều so với vỏ lục địa dày tới 70 km).'],
+['Vỏ Trái Đất được phân ra thành hai kiểu chính là',['lớp vỏ lục địa và lớp vỏ đại dương.','lớp Manti và lớp vỏ đại dương.','lớp vỏ lục địa và lớp Manti.','thạch quyển và lớp Manti.'],'A','Dựa vào vị trí và đặc điểm cấu tạo, vỏ Trái Đất chia làm 2 kiểu: Vỏ lục địa và Vỏ đại dương.'],
+['Đá macma được hình thành',['từ dưới sâu nóng chảy, trào lên mặt đất nguội đi.','ở nơi trũng do sự lắng tụ và nén chặt các vật liệu.','từ trầm tích bị thay đổi tính chất do nhiệt độ cao.','từ đá biến chất bị thay đổi tính chất do sức nén lớn.'],'A','Đá macma sinh ra do khối macma nóng chảy trong lòng đất kết tinh hoặc trào ra bề mặt nguội cứng lại.'],
+['Đá trầm tích được hình thành',['từ dưới sâu nóng chảy, trào lên mặt đất nguội đi.','ở nơi trũng do sự lắng tụ và nén chặt các vật liệu.','từ trầm tích bị thay đổi tính chất do nhiệt độ cao.','từ đá biến chất bị thay đổi tính chất do sức nén lớn.'],'B','Đá trầm tích tích tụ ở những vùng lõm do vật liệu vụn nát gắn kết và nén chặt qua thời gian dài.'],
+['Để thể hiện các mỏ than trên lãnh thổ nước ta người ta thường dùng phương pháp',['kí hiệu đường chuyển động.','vùng phân bố.','kí hiệu.','chấm điểm.'],'C','Các mỏ khoáng sản (như mỏ than) là những điểm cụ thể nên dùng phương pháp kí hiệu (hình vuông màu đen).'],
+['Để thể hiện số lượng đàn bò của các tỉnh ở nước ta người ta thường dùng phương pháp',['kí hiệu.','chấm điểm.','bản đồ - biểu đồ.','vùng phân bố.'],'C','Phương pháp bản đồ - biểu đồ đặt các biểu đồ cột/tròn vào phạm vi lãnh thổ từng tỉnh để thể hiện số lượng/quy mô.'],
+['Dòng biển thường được biểu hiện bằng phương pháp',['đường chuyển động.','kí hiệu.','chấm điểm.','bản đồ - biểu đồ.'],'A','Dòng biển có hướng di chuyển rõ ràng trên đại dương nên phải dùng các mũi tên của phương pháp đường chuyển động.'],
+['Giờ quốc tế được lấy theo giờ của',['múi giờ số 0.','múi giờ số 1.','múi giờ số 23.','múi giờ số 7.'],'A','Giờ quốc tế (GMT/UTC) quy ước lấy theo giờ mặt trời của múi giờ số 0 (có kinh tuyến gốc 0° đi qua kính thiên văn Greenwich).'],
+['Đường chuyển ngày quốc tế được lấy theo kinh tuyến nào?',['0°.','180°.','90°T.','90°Đ.'],'B','Kinh tuyến 180° đi qua giữa Thái Bình Dương được quy ước làm đường chuyển ngày quốc tế.'],
+['Các địa điểm thuộc các kinh tuyến khác nhau sẽ có giờ khác nhau gọi là',['giờ múi.','giờ địa phương.','giờ quốc tế.','giờ GMT.'],'B','Giờ địa phương (giờ Mặt Trời) là giờ riêng của từng kinh tuyến căn cứ vào vị trí Mặt Trời lên cao nhất.'],
+['Lãnh thổ Việt Nam chủ yếu nằm trong múi giờ số mấy?',['5.','6.','7.','8.'],'C','Toàn bộ lãnh thổ đất liền Việt Nam nằm hoàn toàn trong múi giờ thứ 7 (GMT+7).'],
+['Ngày nào sau đây ở vòng cực Bắc có thời gian ngày dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'B','Ngày Hạ chí 22/6, Bán cầu Bắc nghiêng nhiều nhất về phía Mặt Trời nên từ Vòng cực Bắc đến Cực Bắc có ngày dài 24 giờ.'],
+['Ngày nào sau đây ở vòng cực Nam có thời gian ngày dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'D','Ngày Đông chí 22/12, Bán cầu Nam ngả về phía Mặt Trời nên khu vực Vòng cực Nam đến Cực Nam xuất hiện ngày dài 24 giờ.'],
+['Ngày nào sau đây ở vòng cực Bắc có thời gian đêm dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'D','Ngày 22/12 Bán cầu Bắc chếch xa Mặt Trời nhất nên Vòng cực Bắc bị khuất hoàn toàn trong bóng tối (đêm 24h).'],
+['Ngày nào sau đây ở vòng cực Nam có thời gian đêm dài 24 giờ?',['21/3.','22/6.','23/9.','22/12.'],'B','Ngày 22/6 Bán cầu Nam chếch xa Mặt Trời nhất nên khu vực vòng cực Nam chìm trong đêm suốt 24 giờ.'],
+['Về mùa hạ, ở các địa điểm trên bán cầu Bắc luôn có',['ngày dài hơn đêm.','đêm dài hơn ngày.','ngày đêm bằng nhau.','toàn ngày hoặc đêm.'],'A','Mùa hạ bán cầu Bắc ngả về phía Mặt Trời nên diện tích chiếu sáng lớn hơn diện tích bóng tối -> Ngày dài hơn đêm.'],
+['Về mùa đông, ở các địa điểm trên bán cầu Bắc luôn có',['ngày dài hơn đêm.','đêm dài hơn ngày.','ngày đêm bằng nhau.','toàn ngày hoặc đêm.'],'B','Mùa đông bán cầu Bắc ngả xa Mặt Trời nên diện tích bóng tối lớn hơn diện tích chiếu sáng -> Đêm dài hơn ngày.'],
+['Bề mặt Trái Đất được chia thành 24 múi giờ, mỗi múi giờ rộng',['15 độ kinh tuyến.','16 độ kinh tuyến.','18 độ kinh tuyến.','20 độ kinh tuyến.'],'A','Trái Đất tự quay 360° hết 24 giờ. Do đó mỗi múi giờ rộng: 360° / 24 = 15° kinh tuyến.'],
+['Khu vực có ngày, đêm kéo dài suốt 24 giờ xảy ra tại',['xích đạo đến cực.','vòng cực đến cực.','xích đạo.','chí tuyến.'],'B','Hiện tượng ngày hoặc đêm kéo dài trọn vẹn 24 giờ chỉ xuất hiện từ vĩ độ Vòng cực (66°33\') tiến về phía hai Cực (90°).'],
+['Ở bán cầu Bắc, mùa nào trong năm có ngày dài hơn đêm rõ rệt nhất?',['Mùa xuân.','Mùa hạ.','Mùa thu.','Mùa đông.'],'B','Mùa hạ là thời điểm Bán cầu Bắc nhận lượng nhiệt và ánh sáng nhiều nhất, góc chiếu sáng lớn nên ngày dài hơn đêm rõ nhất.'],
+['Thạch quyển được hợp thành bởi lớp vỏ Trái Đất và',['phần trên của lớp Man-ti.','phần dưới của lớp Man-ti.','nhân ngoài của Trái Đất.','nhân trong của Trái Đất.'],'A','Thạch quyển gồm toàn bộ vỏ Trái Đất cứng bên trên và phần trên cùng của lớp Manti (Manti trên).'],
+['Giới hạn thạch quyển ở độ sâu khoảng',['50 km.','100 km.','150 km.','200 km.'],'B','Giới hạn dưới của Thạch quyển nằm ở độ sâu khoảng 100 km (tính từ bề mặt Trái Đất xuống).'],
+['Các mảng kiến tạo',['luôn ổn định ở một nơi.','chỉ có các mảng lục địa.','di chuyển, tiếp xúc với nhau.','chỉ có các mảng đại dương.'],'C','Các mảng kiến tạo không đứng yên mà liên tục dịch chuyển chậm trên lớp Manti quánh dẻo và tiếp xúc xô chồm/tách xa nhau.'],
+['Mảng kiến tạo nào sau đây toàn là vỏ đại dương?',['Mảng Ấn Độ, Ô-xtrây-li-a.','Mảng Thái Bình Dương.','Mảng Phi.','Mảng Nam Mỹ.'],'B','Mảng Thái Bình Dương là mảng kiến tạo duy nhất hầu như chỉ chứa vỏ đại dương (mảng biển).'],
+['Dãy núi Hi-ma-lay-a được hình thành do',['mảng Bắc Mĩ xô vào mảng Âu - Á.','mảng Phi xô vào mảng Âu - Á.','mảng Thái Bình Dương xô vào mảng Âu - Á.','mảng Ấn Độ - Ôxtrâylia xô vào mảng Âu - Á.'],'D','Hi-ma-lay-a nâng cao tráng lệ là kết quả của sự va chạm xô húc giữa mảng Ấn Độ - Ô-xtrây-li-a với mảng Âu - Á.'],
+['Nơi tiếp xúc giữa các mảng kiến tạo sẽ thường xuất hiện',['động đất, núi lửa.','bão.','ngập lụt.','thủy triều dâng.'],'A','Vùng tiếp xúc giữa các mảng là những vùng đứt gãy yếu của vỏ Trái Đất, sinh ra năng lượng giải phóng gây động đất, núi lửa.']
 ];
 
 function make1(){
-  one.innerHTML=Q.map((q,i)=>`<article class="card"><div class="q">Câu ${i+1}: ${q[0]} 🔑</div><div class="opts">${q[1].map((x,j)=>`<div class="opt" id="o${i}${'ABCD'[j]}">${'ABCD'[j]}.${x}</div>`).join('')}</div><div class="row"><button class="key" onclick="open1(${i},'${q[2]}')">🔑</button><span id="a${i}" class="ans">Đáp án: ${q[2]}</span></div></article>`).join('')
+  one.innerHTML=Q.map((q,i)=>`
+    <article class="card">
+      <div class="q">Câu ${i+1}: ${q[0]} 🔑</div>
+      <div class="opts">${q[1].map((x,j)=>`<div class="opt" id="o${i}${'ABCD'[j]}">${'ABCD'[j]}.${x}</div>`).join('')}</div>
+      <div class="row">
+        <button class="key" onclick="open1(${i},'${q[2]}')">🔑 Xem đáp án & Lời giải</button>
+        <div id="a${i}" class="ans">
+          <b>Đáp án đúng: ${q[2]}</b>
+          <div class="explain"><b>Lý do chọn:</b> ${q[3]}</div>
+        </div>
+      </div>
+    </article>
+  `).join('')
 }
 function open1(i,a){
   document.getElementById('o'+i+a).classList.add('correct');
-  document.getElementById('a'+i).classList.add('show')
+  document.getElementById('a'+i).classList.add('show');
 }
 
+// DỮ LIỆU PHẦN II: TRẮC NGHIỆM ĐÚNG / SAI
 const TF=[
-  [['a','Thạch quyển được tạo thành bởi 2 mảng kiến tạo.','×'],['b','Các mảng kiến tạo hoàn toàn là lục địa.','×'],['c','Các mảng kiến tạo nhẹ, nổi và dịch chuyển.','✓'],['d','Sự dịch chuyển của các mảng kiến tạo là do hoạt động của các dòng đối lưu vật chất.','✓']],
-  [['a','Nguyên nhân sinh ra mùa là do hệ quả chuyển động quay quanh Mặt Trời của Trái Đất.','✓'],['b','Hiện tượng mùa diễn ra ngược nhau giữa hai bán cầu.','✓'],['c','Vùng ôn đới có bốn mùa rõ rệt nhất.','✓'],['d','Thời gian bắt đầu và kết thúc các mùa ở nước ta trùng khớp giữa âm lịch với dương lịch.','×']],
-  [['a','Mùa là một khoảng thời gian trong năm mang những đặc điểm riêng biệt về thời tiết, khí hậu.','✓'],['b','Sự luân phiên ngả về phía Mặt Trời làm thay đổi góc chiếu sáng và thời gian chiếu sáng, từ đó sinh ra các mùa trên Trái Đất.','✓'],['c','Các mùa trong năm diễn ra hoàn toàn giống nhau cùng một lúc ở cả bán cầu Bắc và bán cầu Nam.','×'],['d','Khi học sinh ở Việt Nam đang nghỉ hè (tháng 7) thì học sinh ở Ô-xtrây-li-a (bán cầu Nam) đang trải qua mùa đông giá lạnh.','✓']],
-  [['a','GPS là hệ thống xác định vị trí của các đối tượng trên mặt đất thông qua hệ thống vệ tinh.','✓'],['b','Bản đồ số chỉ lưu trữ trên máy tính chuyên dụng, không thể hiển thị trên các thiết bị khác.','×'],['c','Việc kết hợp giữa bản đồ số và GPS giúp quá trình tra cứu không gian trở nên trực quan và chính xác hơn bản đồ giấy.','✓'],['d','Người dùng có thể sử dụng điện thoại thông minh để lưu lại toạ độ các điểm dừng chân trong một hành trình di chuyển.','✓']],
-  [['a','Vỏ Trái Đất có độ dày dao động trong khoảng từ 5 km đến 70 km tuỳ từng vị trí.','✓'],['b','Lớp manti trên đã làm cho thạch quyển có độ dày lớn hơn so với vỏ Trái Đất.','✓'],['c','Dòng mác-ma núi lửa phun trào xuất phát từ độ sâu 150 km trong lòng đất là bắt nguồn từ thạch quyển.','×'],['d','Khái niệm vỏ Trái Đất và thạch quyển là hoàn toàn đồng nhất với nhau về mặt không gian.','×']]
+  [
+    ['a','Thạch quyển được tạo thành bởi 2 mảng kiến tạo.','×'],
+    ['b','Các mảng kiến tạo hoàn toàn là lục địa.','×'],
+    ['c','Các mảng kiến tạo nhẹ, nổi và dịch chuyển.','✓'],
+    ['d','Sự dịch chuyển của các mảng kiến tạo là do hoạt động của các dòng đối lưu vật chất.','✓']
+  ],
+  [
+    ['a','Nguyên nhân sinh ra mùa là do hệ quả chuyển động quay quanh Mặt Trời của Trái Đất.','✓'],
+    ['b','Hiện tượng mùa diễn ra ngược nhau giữa hai bán cầu.','✓'],
+    ['c','Vùng ôn đới có bốn mùa rõ rệt nhất.','✓'],
+    ['d','Thời gian bắt đầu và kết thúc các mùa ở nước ta trùng khớp giữa âm lịch với dương lịch.','×']
+  ],
+  [
+    ['a','Mùa là một khoảng thời gian trong năm mang những đặc điểm riêng biệt về thời tiết, khí hậu.','✓'],
+    ['b','Sự luân phiên ngả về phía Mặt Trời làm thay đổi góc chiếu sáng và thời gian chiếu sáng, từ đó sinh ra các mùa trên Trái Đất.','✓'],
+    ['c','Các mùa trong năm diễn ra hoàn toàn giống nhau cùng một lúc ở cả bán cầu Bắc và bán cầu Nam.','×'],
+    ['d','Khi học sinh ở Việt Nam đang nghỉ hè (tháng 7) thì học sinh ở Ô-xtrây-li-a (bán cầu Nam) đang trải qua mùa đông giá lạnh.','✓']
+  ],
+  [
+    ['a','GPS là hệ thống xác định vị trí của các đối tượng trên mặt đất thông qua hệ thống vệ tinh.','✓'],
+    ['b','Bản đồ số chỉ lưu trữ trên máy tính chuyên dụng, không thể hiển thị trên các thiết bị khác.','×'],
+    ['c','Việc kết hợp giữa bản đồ số và GPS giúp quá trình tra cứu không gian trở nên trực quan và chính xác hơn bản đồ giấy.','✓'],
+    ['d','Người dùng có thể sử dụng điện thoại thông minh để lưu lại toạ độ các điểm dừng chân trong một hành trình di chuyển.','✓']
+  ],
+  [
+    ['a','Vỏ Trái Đất có độ dày dao động trong khoảng từ 5 km đến 70 km tuỳ từng vị trí.','✓'],
+    ['b','Lớp manti trên đã làm cho thạch quyển có độ dày lớn hơn so me với vỏ Trái Đất.','✓'],
+    ['c','Dòng mác-ma núi lửa phun trào xuất phát từ độ sâu 150 km trong lòng đất là bắt nguồn từ thạch quyển.','×'],
+    ['d','Khái niệm vỏ Trái Đất và thạch quyển là hoàn toàn đồng nhất với nhau về mặt không gian.','×']
+  ]
+];
+
+const TF_Exp = [
+  "<b>Phân tích chi tiết từng ý:</b><br>" +
+  "• <b>a SAI:</b> Thạch quyển không chỉ có 2 mảng mà bao gồm 7 mảng kiến tạo lớn (Âu-Á, Bắc Mỹ, Nam Mỹ, Phi, Ấn Độ - Ôxtrây-li-a, Thái Bình Dương, Nam Cực) cùng hàng chục mảng nhỏ.<br>" +
+  "• <b>b SAI:</b> Các mảng kiến tạo bao gồm mảng lục địa, mảng đại dương hoặc kết hợp cả hai (chẳng hạn mảng Thái Bình Dương chỉ gồm vỏ đại dương).<br>" +
+  "• <b>c ĐÚNG:</b> Các mảng kiến tạo có tỉ trọng nhẹ hơn, nằm nổi phía trên lớp Manti quánh dẻo và dịch chuyển liên tục.<br>" +
+  "• <b>d ĐÚNG:</b> Năng lượng làm dịch chuyển các mảng chính là do các dòng đối lưu vật chất quánh dẻo nhiệt độ cao ở tầng Manti trên.",
+
+  "<b>Phân tích chi tiết từng ý:</b><br>" +
+  "• <b>a ĐÚNG:</b> Trái Đất chuyển động quanh Mặt Trời với trục nghiêng 66°33' không đổi hướng sinh ra hiện tượng các mùa.<br>" +
+  "• <b>b ĐÚNG:</b> Khi Bán cầu Bắc ngả về Mặt Trời (mùa hạ) thì Bán cầu Nam chếch xa Mặt Trời (mùa đông) -> Hai bán cầu mùa ngược nhau.<br>" +
+  "• <b>c ĐÚNG:</b> Vùng ôn đới nhận lượng nhiệt trung bình, có sự thay đổi rõ rệt giữa các mùa Xuân - Hạ - Thu - Đông.<br>" +
+  "• <b>d SAI:</b> Dương lịch tính theo chu kỳ Trái Đất quanh Mặt Trời, Âm lịch tính theo chu kỳ Mặt Trăng quanh Trái Đất nên mốc thời gian không trùng khớp nhau.",
+
+  "<b>Phân tích chi tiết từng ý:</b><br>" +
+  "• <b>a ĐÚNG:</b> Khái niệm mùa chính xác trong sách giáo khoa Địa Lí 10.<br>" +
+  "• <b>b ĐÚNG:</b> Trục Trái Đất nghiêng làm thay đổi góc chiếu và thời gian chiếu sáng trong năm sinh ra các mùa.<br>" +
+  "• <b>c SAI:</b> Mùa diễn ra tráo đổi ngược nhau hoàn toàn giữa 2 bán cầu chứ không giống nhau.<br>" +
+  "• <b>d ĐÚNG:</b> Tháng 7 là mùa hạ ở Bán cầu Bắc (Việt Nam) nhưng lại là mùa đông ở Bán cầu Nam (Ô-xtrây-li-a).",
+
+  "<b>Phân tích chi tiết từng ý:</b><br>" +
+  "• <b>a ĐÚNG:</b> GPS (Global Positioning System) hoạt động nhờ mạng lưới vệ tinh nhân tạo bay quanh Trái Đất.<br>" +
+  "• <b>b SAI:</b> Bản đồ số được mã hóa dữ liệu nên dễ dàng cài đặt và hiển thị trên điện thoại, đồng hồ thông minh, màn hình ô tô...<br>" +
+  "• <b>c ĐÚNG:</b> Tích hợp GPS giúp bản đồ số định vị thời gian thực, điều hướng thông minh hơn hẳn bản đồ giấy tĩnh.<br>" +
+  "• <b>d ĐÚNG:</b> Smartphone có tính năng định vị GPS để đánh dấu vị trí, lưu lại hành trình lịch sử di chuyển.",
+
+  "<b>Phân tích chi tiết từng ý:</b><br>" +
+  "• <b>a ĐÚNG:</b> Độ dày vỏ Trái Đất mỏng nhất ở đại dương (~5km) và dày nhất ở miền núi cao lục địa (đến 70km).<br>" +
+  "• <b>b ĐÚNG:</b> Thạch quyển = Vỏ Trái Đất + Lớp Manti trên (dày đến 100km) -> Rõ ràng dày hơn lớp vỏ Trái Đất.<br>" +
+  "• <b>c SAI:</b> Độ sâu 150 km vượt quá giới hạn của Thạch quyển (vốn chỉ sâu đến khoảng 100 km), nằm ở lớp Manti mềm phía dưới.<br>" +
+  "• <b>d SAI:</b> Thạch quyển rộng hơn vỏ Trái Đất (bao gồm cả phần trên Manti) nên hai khái niệm này không đồng nhất."
 ];
 
 function make2(){
-  two.innerHTML=TF.map((g,i)=>`<article class="card"><div class="q">Câu ${i+1} 🔑</div>${g.map((x,j)=>`<div class="tf"><span>${x[0]})${x[1]}</span><b id="m${i}${j}" class="mark ${x[2]=='✓'?'t':'f'} ans">${x[2]}</b></div>`).join('')}<div class="row"><button class="key" onclick="openTF(${i})">🔑</button><span class="ans" id="ta${i}">Đáp án đã mở</span></div></article>`).join('')
+  two.innerHTML=TF.map((g,i)=>`
+    <article class="card">
+      <div class="q">Câu ${i+1} 🔑</div>
+      ${g.map((x,j)=>`<div class="tf"><span>${x[0]})${x[1]}</span><b id="m${i}${j}" class="mark ${x[2]=='✓'?'t':'f'} ans">${x[2]}</b></div>`).join('')}
+      <div class="row">
+        <button class="key" onclick="openTF(${i})">🔑 Xem phân tích Đúng/Sai chi tiết</button>
+        <div class="ans" id="ta${i}">
+          <b>ĐÁP ÁN ĐÃ MỞ</b>
+          <div class="explain">${TF_Exp[i]}</div>
+        </div>
+      </div>
+    </article>
+  `).join('');
 }
 function openTF(i){
   TF[i].forEach((_,j)=>document.getElementById('m'+i+j).classList.add('show'));
   document.getElementById('ta'+i).classList.add('show')
 }
 
+// DỮ LIỆU PHẦN III: TRẢ LỜI NGẮN TÍNH TOÁN
 const S=[
-  ['1','1 cm trên bản đồ tỉ lệ 1 : 500 000 tương ứng với','5 km ngoài thực địa.'],
-  ['2','Khi Luân Đôn (múi giờ 0) là 5 giờ thì Bắc Kinh (múi giờ 8) là','13 giờ.'],
-  ['3','Tỉ lệ 1 : 200 000, khoảng cách C–D trên bản đồ 5 cm thì thực địa là','10 km.'],
-  ['4','Khi Mát-xcơ-va (múi giờ 3) là 2 giờ thì Gia-các-ta (múi giờ 8) là','7 giờ.'],
-  ['5','Máy bay Hà Nội xuất phát 3 giờ, bay 3 giờ đến Ma-ni-la (múi giờ 8), lúc hạ cánh là','7 giờ.'],
-  ['6','Kinh tuyến 150°Đ thuộc múi giờ','10.'],
-  ['7','Khi Hà Nội là 9 giờ ngày 2-9-2026 thì Luân Đôn là','2 giờ ngày 2-9-2026.'],
-  ['8','Khi GMT là 5 giờ ngày 15/7/2026 thì Hà Nội là','12 giờ ngày 15/7/2026.'],
-  ['9','Tỉ lệ 1 : 2 000 000, Xa Mát – TP.HCM trên bản đồ 7,5 cm thì thực tế là','150 km.'],
-  ['10','Tỉ lệ 1 : 3 000 000, 1 cm trên bản đồ tương ứng với','30 km.'],
-  ['11','Khi Luân Đôn là 6 giờ thì Tô-ky-ô (múi giờ 9) là','15 giờ.'],
-  ['12','Máy bay Hà Nội xuất phát 5 giờ, bay 10 giờ đến Can-bê-ra (múi giờ 9), lúc hạ cánh là','17 giờ.'],
-  ['13','Kinh tuyến 120°Đ thuộc múi giờ','8.'],
-  ['14','Khi Mát-xcơ-va là 5 giờ thì Hà Nội là','9 giờ.'],
-  ['15','Quãng đường nhà – trường 12 km, xe chạy 30 km/h. Thời gian đi là','24 phút.']
+  [
+    '1',
+    '1 cm trên bản đồ tỉ lệ 1 : 500 000 tương ứng với bao nhiêu km ngoài thực địa?',
+    '5 km.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Tỉ lệ 1 : 500 000 cho biết 1 cm trên bản đồ = 500 000 cm ngoài thực tế.<br>' +
+    '2. Đổi đơn vị cm sang m: 500 000 cm / 100 = 5 000 m.<br>' +
+    '3. Đổi m sang km: 5 000 m / 1 000 = <b>5 km</b>.'
+  ],
+  [
+    '2',
+    'Khi Luân Đôn (múi giờ 0) là 5 giờ thì Bắc Kinh (múi giờ 8) là mấy giờ?',
+    '13 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Xác định chênh lệch giờ: Múi 8 - Múi 0 = 8 giờ (Bắc Kinh ở phía Đông nên giờ nhanh hơn).<br>' +
+    '2. Tính giờ Bắc Kinh: 5 giờ (Luân Đôn) + 8 giờ = <b>13 giờ</b> cùng ngày.'
+  ],
+  [
+    '3',
+    'Bản đồ tỉ lệ 1 : 200 000, đo được khoảng cách C–D là 5 cm. Thực tế C-D dài bao nhiêu km?',
+    '10 km.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Quy đổi tỉ lệ: 1 cm trên bản đồ = 200 000 cm thực tế = 2 km.<br>' +
+    '2. Khoảng cách thực tế = 5 cm × 2 km = <b>10 km</b>.'
+  ],
+  [
+    '4',
+    'Khi Mát-xcơ-va (múi giờ 3) là 2 giờ thì Gia-các-ta (múi giờ 8) là mấy giờ?',
+    '7 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Chênh lệch múi giờ: Múi 8 - Múi 3 = 5 giờ (Gia-các-ta sớm hơn Mát-xcơ-va 5 tiếng).<br>' +
+    '2. Giờ tại Gia-các-ta: 2 giờ + 5 giờ = <b>7 giờ</b>.'
+  ],
+  [
+    '5',
+    'Máy bay từ Hà Nội (múi 7) xuất phát lúc 3 giờ, bay 3 giờ đến Ma-ni-la (múi 8). Máy bay hạ cánh lúc mấy giờ (giờ Ma-ni-la)?',
+    '7 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Ma-ni-la (múi 8) nhanh hơn Hà Nội (múi 7) 1 giờ.<br>' +
+    '2. Lúc xuất phát ở Hà Nội là 3 giờ thì lúc đó ở Ma-ni-la đã là: 3 + 1 = 4 giờ.<br>' +
+    '3. Cộng thêm thời gian bay 3 tiếng: 4 giờ + 3 giờ = <b>7 giờ</b>.'
+  ],
+  [
+    '6',
+    'Kinh tuyến 150°Đ thuộc múi giờ số mấy?',
+    '10.',
+    '<b>Công thức tính múi giờ ở Bán cầu Đông:</b><br>' +
+    'Múi giờ = Số kinh tuyến / 15 = 150 / 15 = <b>Múi giờ số 10</b>.'
+  ],
+  [
+    '7',
+    'Khi Hà Nội (múi 7) là 9 giờ ngày 2-9-2026 thì Luân Đôn (múi 0) là mấy giờ?',
+    '2 giờ ngày 2-9-2026.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Luân Đôn (múi 0) chậm hơn Hà Nội (múi 7) là 7 giờ.<br>' +
+    '2. Lấy giờ Hà Nội trừ đi 7: 9 giờ - 7 giờ = <b>2 giờ ngày 2-9-2026</b>.'
+  ],
+  [
+    '8',
+    'Khi GMT (múi 0) là 5 giờ ngày 15/7/2026 thì Hà Nội (múi 7) là mấy giờ?',
+    '12 giờ ngày 15/7/2026.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Hà Nội thuộc múi giờ 7 nên đi trước giờ GMT 7 tiếng.<br>' +
+    '2. Giờ Hà Nội = 5 giờ + 7 giờ = <b>12 giờ ngày 15/7/2026</b>.'
+  ],
+  [
+    '9',
+    'Tỉ lệ bản đồ 1 : 2 000 000, khoảng cách Xa Mát – TP.HCM đo được 7,5 cm. Thực tế cách nhau bao nhiêu km?',
+    '150 km.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Tỉ lệ 1 : 2 000 000 tương ứng 1 cm = 20 km thực tế.<br>' +
+    '2. Khoảng cách thực tế = 7,5 cm × 20 km = <b>150 km</b>.'
+  ],
+  [
+    '10',
+    'Tỉ lệ 1 : 3 000 000, 1 cm trên bản đồ tương ứng với bao nhiêu km thực tế?',
+    '30 km.',
+    '<b>Các bước tính:</b><br>' +
+    '1. 3 000 000 cm = 30 000 m = <b>30 km</b>.'
+  ],
+  [
+    '11',
+    'Khi Luân Đôn (múi 0) là 6 giờ thì Tô-ky-ô (múi 9) là mấy giờ?',
+    '15 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Tô-ky-ô thuộc múi 9 nên nhanh hơn Luân Đôn 9 giờ.<br>' +
+    '2. Giờ Tô-ky-ô = 6 giờ + 9 giờ = <b>15 giờ</b>.'
+  ],
+  [
+    '12',
+    'Máy bay xuất phát từ Hà Nội (múi 7) lúc 5 giờ, bay 10 giờ đến Can-bê-ra (múi 9). Máy bay hạ cánh lúc mấy giờ giờ Can-bê-ra?',
+    '17 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Can-bê-ra (múi 9) nhanh hơn Hà Nội (múi 7) 2 giờ.<br>' +
+    '2. Lúc cất cánh (5h Hà Nội) thì ở Can-bê-ra là 7 giờ.<br>' +
+    '3. Giờ hạ cánh = 7 giờ + 10 giờ bay = <b>17 giờ</b>.'
+  ],
+  [
+    '13',
+    'Kinh tuyến 120°Đ thuộc múi giờ số mấy?',
+    '8.',
+    '<b>Cách tính múi giờ kinh tuyến Đông:</b><br>' +
+    'Múi giờ = Kinh tuyến Đông / 15 = 120 / 15 = <b>Múi giờ số 8</b>.'
+  ],
+  [
+    '14',
+    'Khi Mát-xcơ-va (múi 3) là 5 giờ thì Hà Nội (múi 7) là mấy giờ?',
+    '9 giờ.',
+    '<b>Các bước tính:</b><br>' +
+    '1. Hà Nội (múi 7) sớm hơn Mát-xcơ-va (múi 3): 7 - 3 = 4 giờ.<br>' +
+    '2. Giờ Hà Nội = 5 giờ + 4 giờ = <b>9 giờ</b>.'
+  ],
+  [
+    '15',
+    'Quãng đường từ nhà đến trường là 12 km, xe đạp điện chạy 30 km/h. Thời gian đi hết bao nhiêu phút?',
+    '24 phút.',
+    '<b>Công thức & Các bước tính:</b><br>' +
+    '1. Thời gian (t) = Quãng đường (s) / Vận tốc (v) = 12 km / 30 km/h = 0,4 giờ.<br>' +
+    '2. Đổi giờ ra phút: 0,4 × 60 phút = <b>24 phút</b>.'
+  ]
 ];
 
 function make3(){
-  three.innerHTML=S.map(x=>`<article class="card"><div class="q">Câu ${x[0]}: ${x[1]} 🔑</div><div class="row"><button class="key" onclick="this.nextElementSibling.classList.add('show')">🔑</button><span class="ans">Đáp án: ${x[2]}</span></div></article>`).join('')
+  three.innerHTML=S.map(x=>`
+    <article class="card">
+      <div class="q">Câu ${x[0]}: ${x[1]} 🔑</div>
+      <div class="row">
+        <button class="key" onclick="this.nextElementSibling.classList.add('show')">🔑 Xem lời giải từng bước</button>
+        <div class="ans">
+          <b>Kết quả: ${x[2]}</b>
+          <div class="explain">${x[3]}</div>
+        </div>
+      </div>
+    </article>
+  `).join('')
 }
 
+// DỮ LIỆU PHẦN IV: TỰ LUẬN
 const F=[
-  ['1','<b>Cho bảng số liệu:</b><br>Tổng lượng mưa tại trạm quan trắc Sơn La, Đà Lạt, Hà Nội năm 2024 (Đơn vị: mm)<br><i>(Sơn La: 1758,5 | Đà Lạt: 2050,4 | Hà Nội: 1945,3)</i><br><b>Yêu cầu:</b> Theo bảng số liệu, hãy vẽ biểu đồ cột thể hiện lượng mưa tại một số địa điểm trên năm 2024.','caut1',drawBarChart],
-  ['2','<b>Cho bảng số liệu:</b><br>Số giờ nắng các tháng trong năm tại trạm quan trắc Hà Nội, năm 2024 (Đơn vị: giờ)<br><i>(Tháng 1 -> 12: 33.2, 45.2, 56.3, 101.9, 100.9, 127.9, 137.0, 144.6, 118.4, 183.4, 146.3, 82.1)</i><br><b>Yêu cầu:</b> Theo bảng số liệu, hãy vẽ biểu đồ đường thể hiện sự thay đổi số giờ nắng các tháng năm 2024 tại trạm quan trắc Hà Nội.','caut2',drawLineChart]
+  [
+    '1',
+    '<b>Cho bảng số liệu:</b><br>Tổng lượng mưa tại trạm quan trắc Sơn La, Đà Lạt, Hà Nội năm 2024 (Đơn vị: mm)<br><i>(Sơn La: 1758,5 | Đà Lạt: 2050,4 | Hà Nội: 1945,3)</i><br><b>Yêu cầu:</b> Hãy vẽ biểu đồ cột thể hiện lượng mưa tại các địa điểm trên năm 2024.',
+    'caut1',
+    drawBarChart,
+    '<b>1. Phương pháp & Lý do chọn biểu đồ:</b><br>' +
+    '• <b>Chọn Biểu đồ Cột đơn:</b> Vì đề bài yêu cầu so sánh quy mô/giá trị tuyệt đối (lượng mưa mm) của các đối tượng độc lập (các địa điểm) trong cùng 1 khoảng thời gian (năm 2024).<br><br>' +
+    '<b>2. Các bước dựng biểu đồ đạt điểm tối đa:</b><br>' +
+    '• Vẽ hệ trục tọa độ Vuông góc: Trục tung (Y) thể hiện Lượng mưa (mm), Trục hoành (X) thể hiện Các địa điểm.<br>' +
+    '• Chia khoảng cách số trên trục tung đều đặn từ 0 đến 2500 mm.<br>' +
+    '• Vẽ các cột có độ rộng bằng nhau, khoảng cách giữa các cột bằng nhau.<br>' +
+    '• Ghi số liệu cụ thể lên đỉnh cột và điền đầy đủ Tên biểu đồ, Đơn vị, Bảng chú giải.'
+  ],
+  [
+    '2',
+    '<b>Cho bảng số liệu:</b><br>Số giờ nắng các tháng trong năm tại trạm quan trắc Hà Nội năm 2024 (Đơn vị: giờ)<br><i>(T1: 33.2, T2: 45.2, T3: 56.3, T4: 101.9, T5: 100.9, T6: 127.9, T7: 137.0, T8: 144.6, T9: 118.4, T10: 183.4, T11: 146.3, T12: 82.1)</i><br><b>Yêu cầu:</b> Hãy vẽ biểu đồ đường thể hiện sự thay đổi số giờ nắng các tháng năm 2024 tại Hà Nội.',
+    'caut2',
+    drawLineChart,
+    '<b>1. Phương pháp & Lý do chọn biểu đồ:</b><br>' +
+    '• <b>Chọn Biểu đồ Đường (Đồ thị):</b> Do xuất hiện từ khóa "sự thay đổi", "diễn biến" qua chuỗi thời gian liên tục nhiều mốc (từ Tháng 1 đến Tháng 12).<br><br>' +
+    '<b>2. Các bước dựng biểu đồ đạt điểm tối đa:</b><br>' +
+    '• Trục tung thể hiện Số giờ nắng (giờ), bắt đầu từ 0 đến 200 giờ.<br>' +
+    '• Trục hoành thể hiện 12 tháng (gốc tọa độ trùng với Tháng 1).<br>' +
+    '• Xoay quanh việc chấm đúng tọa độ số giờ nắng từng tháng, sau đó dùng thước nối các điểm lại thành đường liên tục.<br>' +
+    '• Điền trị số lên các điểm mốc và điền Tên biểu đồ.'
+  ]
 ];
 
 function make4(){
@@ -264,8 +480,9 @@ function make4(){
     <article class="card">
       <div class="q">Câu ${x[0]}: ${x[1]} 🔑</div>
       <div class="row">
-        <button class="key" onclick="showEssayAns('${x[2]}', ${x[0]-1})">🔑 Xem biểu đồ đáp án</button>
+        <button class="key" onclick="showEssayAns('${x[2]}', ${x[0]-1})">🔑 Xem biểu đồ & Phân tích cách làm</button>
         <div id="${x[2]}" class="ans iv">
+          <div class="explain">${x[4]}</div>
           <div class="chart-container">
             <canvas id="cvs_${x[2]}" class="chart-canvas" width="700" height="400"></canvas>
           </div>
@@ -283,21 +500,19 @@ function showEssayAns(id, idx){
   }
 }
 
+// HÀM VẼ BIỂU ĐỒ CỘT
 function drawBarChart(canvasId){
   const cvs = document.getElementById(canvasId);
   const ctx = cvs.getContext('2d');
   const w = cvs.width, h = cvs.height;
-  
   ctx.clearRect(0,0,w,h);
   
-  // Title
   ctx.fillStyle = '#00e5ff';
-  ctx.font = 'bold 15px Arial';
+  ctx.font = 'bold 14px Arial';
   ctx.textAlign = 'center';
-  ctx.fillText('BIỂU ĐỒ THỂ HIỆN LƯỢNG MƯA TẠI SƠN LA, ĐÀ LẠT, HÀ NỘI NĂM 2024', w/2, 30);
+  ctx.fillText('BIỂU ĐỒ THỂ HIỆN LƯỢNG MƯA TẠI SƠN LA, ĐÀ LẠT, HÀ NỘI NĂM 2024', w/2, 28);
   
-  // Axes
-  const padL = 70, padR = 40, padT = 70, padB = 60;
+  const padL = 70, padR = 40, padT = 60, padB = 60;
   ctx.strokeStyle = '#385878';
   ctx.lineWidth = 2;
   ctx.beginPath();
@@ -306,14 +521,12 @@ function drawBarChart(canvasId){
   ctx.lineTo(w - padR, h - padB);
   ctx.stroke();
   
-  // Unit
   ctx.fillStyle = '#a8efff';
   ctx.font = '12px Arial';
   ctx.textAlign = 'right';
   ctx.fillText('(mm)', padL - 10, padT - 10);
   ctx.fillText('Địa điểm', w - padR, h - padB + 35);
   
-  // Y Axis ticks (0 -> 2500)
   const maxVal = 2500;
   for(let v=0; v<=maxVal; v+=500){
     let y = (h - padB) - (v / maxVal) * (h - padB - padT);
@@ -328,54 +541,54 @@ function drawBarChart(canvasId){
     ctx.fillText(v, padL - 8, y + 4);
   }
   
-  // Data
   const data = [
     { label: 'Sơn La', val: 1758.5, color: '#00d88c' },
     { label: 'Đà Lạt', val: 2050.4, color: '#00e5ff' },
-    { label: 'Hà Nội', val: 1945.3, color: '#ff4770' }
+    { label: 'Hà Nội', val: '#ff4770', valNum: 1945.3 }
   ];
   
   const chartW = w - padL - padR;
   const colW = 60;
-  const step = chartW / data.length;
+  const step = chartW / 3;
   
-  data.forEach((d, i) => {
+  const realData = [
+    { label: 'Sơn La', val: 1758.5, color: '#00d88c' },
+    { label: 'Đà Lạt', val: 2050.4, color: '#00e5ff' },
+    { label: 'Hà Nội', val: 1945.3, color: '#ff4770' }
+  ];
+
+  realData.forEach((d, i) => {
     let x = padL + step*i + step/2 - colW/2;
     let barH = (d.val / maxVal) * (h - padB - padT);
     let y = (h - padB) - barH;
     
-    // Draw Bar
     ctx.fillStyle = d.color;
     ctx.fillRect(x, y, colW, barH);
     
-    // Value text
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 12px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(d.val, x + colW/2, y - 8);
     
-    // Label
     ctx.fillStyle = '#a8efff';
     ctx.font = '13px Arial';
     ctx.fillText(d.label, x + colW/2, h - padB + 20);
   });
 }
 
+// HÀM VẼ BIỂU ĐỒ ĐƯỜNG
 function drawLineChart(canvasId){
   const cvs = document.getElementById(canvasId);
   const ctx = cvs.getContext('2d');
   const w = cvs.width, h = cvs.height;
-  
   ctx.clearRect(0,0,w,h);
   
-  // Title
   ctx.fillStyle = '#00e5ff';
-  ctx.font = 'bold 14px Arial';
+  ctx.font = 'bold 13px Arial';
   ctx.textAlign = 'center';
   ctx.fillText('BIỂU ĐỒ THỂ HIỆN SỰ THAY ĐỔI SỐ GIỜ NẮNG CÁC THÁNG NĂM 2024 TẠI HÀ NỘI', w/2, 25);
   
-  // Axes
-  const padL = 60, padR = 40, padT = 60, padB = 60;
+  const padL = 60, padR = 40, padT = 55, padB = 60;
   ctx.strokeStyle = '#385878';
   ctx.lineWidth = 2;
   ctx.beginPath();
@@ -384,14 +597,12 @@ function drawLineChart(canvasId){
   ctx.lineTo(w - padR, h - padB);
   ctx.stroke();
   
-  // Unit
   ctx.fillStyle = '#a8efff';
   ctx.font = '12px Arial';
   ctx.textAlign = 'right';
   ctx.fillText('(giờ)', padL - 10, padT - 10);
   ctx.fillText('Tháng', w - padR, h - padB + 35);
   
-  // Y Axis ticks (0 -> 200)
   const maxVal = 200;
   for(let v=0; v<=maxVal; v+=50){
     let y = (h - padB) - (v / maxVal) * (h - padB - padT);
@@ -406,7 +617,6 @@ function drawLineChart(canvasId){
     ctx.fillText(v, padL - 8, y + 4);
   }
   
-  // Data
   const data = [33.2, 45.2, 56.3, 101.9, 100.9, 127.9, 137.0, 144.6, 118.4, 183.4, 146.3, 82.1];
   const chartW = w - padL - padR;
   const step = chartW / (data.length - 1);
@@ -418,7 +628,6 @@ function drawLineChart(canvasId){
     points.push({x, y, val, month: i + 1});
   });
   
-  // Draw Line
   ctx.strokeStyle = '#00e5ff';
   ctx.lineWidth = 3;
   ctx.beginPath();
@@ -428,21 +637,17 @@ function drawLineChart(canvasId){
   });
   ctx.stroke();
   
-  // Draw Points & Text
   points.forEach((p) => {
-    // Point
     ctx.fillStyle = '#ff304e';
     ctx.beginPath();
     ctx.arc(p.x, p.y, 5, 0, Math.PI*2);
     ctx.fill();
     
-    // Value text
     ctx.fillStyle = '#ffffff';
     ctx.font = '11px Arial';
     ctx.textAlign = 'center';
     ctx.fillText(p.val, p.x, p.y - 10);
     
-    // Month Label
     ctx.fillStyle = '#a8efff';
     ctx.font = '12px Arial';
     ctx.fillText('T' + p.month, p.x, h - padB + 20);
@@ -459,6 +664,7 @@ function pg(n,b){
 
 make1(); make2(); make3(); make4();
 
+// NỀN HIỆU ỨNG CANVAS
 const c=document.getElementById('bg'),x=c.getContext('2d');
 let w,h,P=[];
 function rs(){
