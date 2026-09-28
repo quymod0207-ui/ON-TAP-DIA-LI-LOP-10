@@ -71,7 +71,7 @@ header{text-align:center;padding:25px 12px 12px}
 h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00dfff}
 .name{display:inline-block;margin-top:12px;padding:9px 14px;border:1px solid #24466a;border-radius:30px;background:#071322cc;color:#00e5ff;font-weight:bold}
 .wrap{width:min(1050px,94%);margin:auto}
-.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+.nav{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0}
 .nav button{border:0;border-radius:16px;padding:17px 7px;color:#fff;font-weight:bold;background:linear-gradient(145deg,#d32145,#690e23);cursor:pointer}
 .nav button.on{background:linear-gradient(145deg,#00d88c,#08785f);box-shadow:0 0 22px #00ff9a44}
 .page{display:none;padding-bottom:45px}
@@ -79,8 +79,9 @@ h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00
 .card{background:#071425dd;border:1px solid #183756;border-radius:17px;padding:15px;margin:11px 0;box-shadow:0 8px 30px #0008;backdrop-filter:blur(7px)}
 .q{font-weight:bold;line-height:1.55;margin-bottom:9px;font-size:15px;color:#fff}
 .opts{display:grid;gap:6px;color:#c9d8e9}
-.opt{padding:8px 10px;border-radius:9px;background:#051222;border:1px solid #18334e}
+.opt{padding:8px 10px;border-radius:9px;background:#051222;border:1px solid #18334e;cursor:pointer;transition:0.2s}
 .opt.correct{border:2px solid #00ff9a;background:#00ff9a15;color:#fff;box-shadow:0 0 13px #00ff9a55;font-weight:bold}
+.opt.selected{border:2px solid #00ff9a;background:#00ff9a33;color:#fff;font-weight:bold}
 .row{display:flex;gap:9px;align-items:center;margin-top:10px;flex-wrap:wrap}
 .key{background:#081727;color:#00e5ff;border:1px solid #385878;border-radius:11px;padding:8px 12px;font-size:14px;font-weight:bold;cursor:pointer;transition:0.2s}
 .key:hover{border-color:#00e5ff;background:#0f2a47}
@@ -88,7 +89,7 @@ h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00
 .ans.show{display:block}
 .explain{margin-top:10px;padding:12px;background:#030f1ebd;border-left:4px solid #00e5ff;border-radius:0 8px 8px 0;color:#c3f3ff;font-weight:normal;font-size:13.5px;line-height:1.6}
 .explain b{color:#00ff9a}
-.tf{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #12283f}
+.tf{display:flex;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid #12283f;align-items:center}
 .mark{font-size:18px;font-weight:900}
 .t{color:#28f58e}
 .f{color:#ff4c6b}
@@ -98,8 +99,28 @@ h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00
 .chart-container{margin-top:15px;background:#030b14;border:1px solid #1f4268;border-radius:12px;padding:15px;text-align:center;overflow-x:auto}
 .chart-canvas{background:#051120;border-radius:8px;max-width:100%;height:auto}
 
-@media(max-width:768px){.subject-grid{grid-template-columns:repeat(2, 1fr);}}
-@media(max-width:650px){.nav{grid-template-columns:1fr}.card{padding:12px}.subject-grid{grid-template-columns:1fr;}}
+/* Style cho phần thi kiểm tra pg(4) */
+#loading-box{display:none;text-align:center;padding:50px;font-size:20px;color:#00e5ff;font-weight:bold}
+.spinner{border:5px solid #183756;border-top:5px solid #00e5ff;border-radius:50%;width:50px;height:50px;animation:spin 1s linear infinite;margin:0 auto 20px}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+
+#exam-timer{position:sticky;top:10px;z-index:100;background:#071d33ef;border:2px solid #00e5ff;border-radius:30px;padding:10px 20px;text-align:center;font-size:18px;font-weight:bold;color:#ffea00;margin-bottom:20px;backdrop-filter:blur(5px);box-shadow:0 0 15px #00e5ff44}
+.tf-btn{border:1px solid #385878;background:#081727;color:#fff;padding:4px 12px;border-radius:6px;cursor:pointer;margin-left:5px;font-weight:bold}
+.tf-btn.active-t{background:#28f58e;color:#000;border-color:#28f58e}
+.tf-btn.active-f{background:#ff4c6b;color:#fff;border-color:#ff4c6b}
+.short-input{width:100%;padding:10px;border-radius:8px;border:1px solid #385878;background:#051222;color:#fff;font-size:15px;margin-top:8px}
+.btn-submit{width:100%;padding:18px;background:linear-gradient(145deg,#00d88c,#08785f);border:0;border-radius:16px;color:#fff;font-size:18px;font-weight:bold;cursor:pointer;margin:30px 0;box-shadow:0 0 20px #00ff9a66}
+.btn-submit:hover{background:linear-gradient(145deg,#00ff9a,#009e60)}
+
+.diagram-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.diagram-card{border:2px solid #18334e;border-radius:10px;padding:10px;background:#051222;cursor:pointer;text-align:center}
+.diagram-card.selected{border-color:#00ff9a;background:#00ff9a15}
+.result-box{background:#081c30;border:2px solid #00e5ff;border-radius:16px;padding:20px;margin-bottom:25px;display:none}
+.result-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(70px,1fr));gap:8px;margin-top:15px}
+.res-item{background:#051222;border:1px solid #183756;padding:8px;border-radius:8px;text-align:center;cursor:pointer;font-weight:bold}
+
+@media(max-width:768px){.subject-grid{grid-template-columns:repeat(2, 1fr);}.diagram-grid{grid-template-columns:1fr;}}
+@media(max-width:650px){.nav{grid-template-columns:repeat(2,1fr)}.card{padding:12px}.subject-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -125,6 +146,7 @@ h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00
       <button class="on" onclick="pg(1,this)">📘 PHẦN I<br><span class="small">40 câu trắc nghiệm</span></button>
       <button onclick="pg(2,this)">🧩 PHẦN II + III<br><span class="small">Đúng/Sai và Trả lời ngắn</span></button>
       <button onclick="pg(3,this)">📊 PHẦN IV<br><span class="small">Vẽ biểu đồ tự luận</span></button>
+      <button onclick="pg(4,this)">📝 KIỂM TRA<br><span class="small">45 Phút - Tổng hợp</span></button>
     </div>
     <section id="p1" class="page on">
       <h2 class="title">Phần I — Trắc nghiệm </h2>
@@ -139,6 +161,19 @@ h1{font-size:clamp(23px,6vw,38px);margin:5px;color:#fff;text-shadow:0 0 18px #00
     <section id="p3" class="page">
       <h2 class="title">Phần IV — Tự luận</h2>
       <div id="four"></div>
+    </section>
+    <section id="p4" class="page">
+      <div id="loading-box">
+        <div class="spinner"></div>
+        Đang khởi tạo đề thi kiểm tra (lấy 50% kiến thức mỗi phần)...
+      </div>
+      <div id="exam-box" style="display:none;">
+        <div id="exam-timer">⏱️ Thời gian còn lại: <span id="timer-display">45:00</span></div>
+        <div id="result-summary" class="result-box"></div>
+        <div id="exam-questions"></div>
+        <hr style="border:0; border-top:2px dashed #183756; margin:30px 0;">
+        <button class="btn-submit" onclick="submitExam()">NỘP BÀI KIỂM TRA</button>
+      </div>
     </section>
   </main>
 </div>
@@ -443,7 +478,7 @@ function make3(){
 const F=[
   [
     '1',
-    '<b>Cho bảng số liệu:</b><br>Tổng lượng mưa tại trạm quan trắc Sơn La, Đà Lạt, Hà Nội năm 2024 (Đơn vị: mm)<br><i>(Sơn La: 1758,5 | Đà Lạt: 2050,4 | Hà Nội: 1945,3)</i><br><b>Yêu cầu:</b> Hãy vẽ biểu đồ cột thể hiện lượng mưa tại các địa điểm trên năm 2024.',
+    '<b>Cho bảng số liệu:</b><br>Tổng lượng mưa tại trạm quan trắc Sơn La, Đà Lạt, Hà Nội năm 2024 (Đơn vị: mm)<br><i>(Sơn La: 1758,5 | Đà Lạt: 2050,4 | Hà Nội: 1945,3)</i><br><b>Yêu cầu:</b> Hãy chọn sơ đồ biểu đồ thích hợp nhất để thể hiện lượng mưa tại các địa điểm năm 2024.',
     'caut1',
     drawBarChart,
     '<b>1. Phương pháp & Lý do chọn biểu đồ:</b><br>' +
@@ -452,11 +487,12 @@ const F=[
     '• Vẽ hệ trục tọa độ Vuông góc: Trục tung (Y) thể hiện Lượng mưa (mm), Trục hoành (X) thể hiện Các địa điểm.<br>' +
     '• Chia khoảng cách số trên trục tung đều đặn từ 0 đến 2500 mm.<br>' +
     '• Vẽ các cột có độ rộng bằng nhau, khoảng cách giữa các cột bằng nhau.<br>' +
-    '• Ghi số liệu cụ thể lên đỉnh cột và điền đầy đủ Tên biểu đồ, Đơn vị, Bảng chú giải.'
+    '• Ghi số liệu cụ thể lên đỉnh cột và điền đầy đủ Tên biểu đồ, Đơn vị, Bảng chú giải.',
+    'Biểu đồ cột'
   ],
   [
     '2',
-    '<b>Cho bảng số liệu:</b><br>Số giờ nắng các tháng trong năm tại trạm quan trắc Hà Nội năm 2024 (Đơn vị: giờ)<br><i>(T1: 33.2, T2: 45.2, T3: 56.3, T4: 101.9, T5: 100.9, T6: 127.9, T7: 137.0, T8: 144.6, T9: 118.4, T10: 183.4, T11: 146.3, T12: 82.1)</i><br><b>Yêu cầu:</b> Hãy vẽ biểu đồ đường thể hiện sự thay đổi số giờ nắng các tháng năm 2024 tại Hà Nội.',
+    '<b>Cho bảng số liệu:</b><br>Số giờ nắng các tháng trong năm tại trạm quan trắc Hà Nội năm 2024 (Đơn vị: giờ)<br><i>(T1: 33.2, T2: 45.2, T3: 56.3, T4: 101.9, T5: 100.9, T6: 127.9, T7: 137.0, T8: 144.6, T9: 118.4, T10: 183.4, T11: 146.3, T12: 82.1)</i><br><b>Yêu cầu:</b> Hãy chọn sơ đồ biểu đồ thể hiện sự thay đổi số giờ nắng các tháng năm 2024 tại Hà Nội.',
     'caut2',
     drawLineChart,
     '<b>1. Phương pháp & Lý do chọn biểu đồ:</b><br>' +
@@ -465,7 +501,8 @@ const F=[
     '• Trục tung thể hiện Số giờ nắng (giờ), bắt đầu từ 0 đến 200 giờ.<br>' +
     '• Trục hoành thể hiện 12 tháng (gốc tọa độ trùng với Tháng 1).<br>' +
     '• Xoay quanh việc chấm đúng tọa độ số giờ nắng từng tháng, sau đó dùng thước nối các điểm lại thành đường liên tục.<br>' +
-    '• Điền trị số lên các điểm mốc và điền Tên biểu đồ.'
+    '• Điền trị số lên các điểm mốc và điền Tên biểu đồ.',
+    'Biểu đồ đường'
   ]
 ];
 
@@ -497,6 +534,7 @@ function showEssayAns(id, idx){
 // HÀM VẼ BIỂU ĐỒ CỘT
 function drawBarChart(canvasId){
   const cvs = document.getElementById(canvasId);
+  if(!cvs) return;
   const ctx = cvs.getContext('2d');
   const w = cvs.width, h = cvs.height;
   ctx.clearRect(0,0,w,h);
@@ -535,16 +573,10 @@ function drawBarChart(canvasId){
     ctx.fillText(v, padL - 8, y + 4);
   }
   
-  const data = [
-    { label: 'Sơn La', val: 1758.5, color: '#00d88c' },
-    { label: 'Đà Lạt', val: 2050.4, color: '#00e5ff' },
-    { label: 'Hà Nội', val: '#ff4770', valNum: 1945.3 }
-  ];
-  
-  const chartW = w - padL - padR;
   const colW = 60;
+  const chartW = w - padL - padR;
   const step = chartW / 3;
-  
+
   const realData = [
     { label: 'Sơn La', val: 1758.5, color: '#00d88c' },
     { label: 'Đà Lạt', val: 2050.4, color: '#00e5ff' },
@@ -573,6 +605,7 @@ function drawBarChart(canvasId){
 // HÀM VẼ BIỂU ĐỒ ĐƯỜNG
 function drawLineChart(canvasId){
   const cvs = document.getElementById(canvasId);
+  if(!cvs) return;
   const ctx = cvs.getContext('2d');
   const w = cvs.width, h = cvs.height;
   ctx.clearRect(0,0,w,h);
@@ -648,12 +681,277 @@ function drawLineChart(canvasId){
   });
 }
 
+/* --- LOGIC VÀ KHỞI TẠO BÀI KIỂM TRA PG(4) --- */
+let timerInterval = null;
+let examData = [];
+let userAnswers = {};
+let totalExamQuestions = 0;
+
 function pg(n,b){
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));
   document.getElementById('p'+n).classList.add('on');
   document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');
+  if(b) b.classList.add('on');
   scrollTo({top:0,behavior:'smooth'});
+
+  if(n === 4){
+    initExamPage();
+  }
+}
+
+function initExamPage(){
+  const loading = document.getElementById('loading-box');
+  const examBox = document.getElementById('exam-box');
+  loading.style.display = 'block';
+  examBox.style.display = 'none';
+
+  setTimeout(() => {
+    loading.style.display = 'none';
+    examBox.style.display = 'block';
+    generateExam();
+    startTimer(45 * 60);
+  }, 2000);
+}
+
+function getRandomItems(arr, percent){
+  let count = Math.ceil(arr.length * percent);
+  let shuffled = [...arr].sort(() => 0.5 - Math.random());
+  return shuffled.slice(0, count);
+}
+
+function generateExam(){
+  examData = [];
+  userAnswers = {};
+  document.getElementById('result-summary').style.display = 'none';
+  
+  let qP1 = getRandomItems(Q, 0.5);
+  let qP2 = getRandomItems(TF, 0.5);
+  let qP3 = getRandomItems(S, 0.5);
+  let qP4 = getRandomItems(F, 0.5);
+
+  let qNum = 1;
+  let html = '';
+
+  // PHẦN I
+  qP1.forEach(item => {
+    let opts = item[1].map((val, idx) => ({ text: val, isCorrect: 'ABCD'[idx] === item[2] }));
+    opts.sort(() => 0.5 - Math.random());
+    let correctIdx = opts.findIndex(x => x.isCorrect);
+    let correctLetter = 'ABCD'[correctIdx];
+
+    examData.push({
+      num: qNum,
+      type: 'P1',
+      correct: correctLetter,
+      original: item
+    });
+
+    html += `
+      <article class="card" id="ex-q-${qNum}">
+        <div class="q">Câu ${qNum}: ${item[0]}</div>
+        <div class="opts">
+          ${opts.map((o, idx) => `
+            <div class="opt" onclick="selectOpt(${qNum}, '${'ABCD'[idx]}', this)">
+              <b>${'ABCD'[idx]}.</b>${o.text}
+            </div>
+          `).join('')}
+        </div>
+      </article>
+    `;
+    qNum++;
+  });
+
+  // PHẦN II
+  qP2.forEach(group => {
+    examData.push({
+      num: qNum,
+      type: 'P2',
+      correct: group.map(x => x[2]),
+      original: group
+    });
+
+    html += `
+      <article class="card" id="ex-q-${qNum}">
+        <div class="q">Câu ${qNum}: Chọn Đúng (✓) hoặc Sai (×) cho từng ý dưới đây:</div>
+        ${group.map((item, idx) => `
+          <div class="tf">
+            <span><b>${item[0]})</b>${item[1]}</span>
+            <div>
+              <button class="tf-btn" onclick="selectTF(${qNum},${idx}, '✓', this)">✓</button>
+              <button class="tf-btn" onclick="selectTF(${qNum},${idx}, '×', this)">×</button>
+            </div>
+          </div>
+        `).join('')}
+      </article>
+    `;
+    qNum++;
+  });
+
+  // PHẦN III
+  qP3.forEach(item => {
+    examData.push({
+      num: qNum,
+      type: 'P3',
+      correct: item[2].replace(/[^0-9a-zA-Z]/g, '').toLowerCase(),
+      original: item
+    });
+
+    html += `
+      <article class="card" id="ex-q-${qNum}">
+        <div class="q">Câu ${qNum}: ${item[1]}</div>
+        <div style="margin-top:10px;">
+          <label><b>Câu trả lời:</b></label>
+          <input type="text" class="short-input" placeholder="Nhập đáp án..." onchange="userAnswers[${qNum}] = this.value.trim()">
+        </div>
+      </article>
+    `;
+    qNum++;
+  });
+
+  // PHẦN IV
+  const diagramTypes = ["Biểu đồ cột", "Biểu đồ đường", "Biểu đồ tròn", "Biểu đồ miền"];
+  qP4.forEach(item => {
+    let targetType = item[5];
+    examData.push({
+      num: qNum,
+      type: 'P4',
+      correct: targetType,
+      original: item
+    });
+
+    html += `
+      <article class="card" id="ex-q-${qNum}">
+        <div class="q">Câu ${qNum}: ${item[1]}</div>
+        <div class="diagram-grid">
+          ${diagramTypes.map(d => `
+            <div class="diagram-card" onclick="selectDiagram(${qNum}, '${d}', this)">
+              <b>${d}</b>
+            </div>
+          `).join('')}
+        </div>
+      </article>
+    `;
+    qNum++;
+  });
+
+  totalExamQuestions = qNum - 1;
+  document.getElementById('exam-questions').innerHTML = html;
+}
+
+function selectOpt(qNum, letter, el){
+  let parent = el.parentElement;
+  parent.querySelectorAll('.opt').forEach(x => x.classList.remove('selected'));
+  el.classList.add('selected');
+  userAnswers[qNum] = letter;
+}
+
+function selectTF(qNum, subIdx, val, el){
+  if(!userAnswers[qNum]) userAnswers[qNum] = {};
+  userAnswers[qNum][subIdx] = val;
+  
+  let parent = el.parentElement;
+  parent.querySelectorAll('.tf-btn').forEach(x => x.className = 'tf-btn');
+  if(val === '✓') el.classList.add('active-t');
+  else el.classList.add('active-f');
+}
+
+function selectDiagram(qNum, type, el){
+  let parent = el.parentElement;
+  parent.querySelectorAll('.diagram-card').forEach(x => x.classList.remove('selected'));
+  el.classList.add('selected');
+  userAnswers[qNum] = type;
+}
+
+function startTimer(duration){
+  clearInterval(timerInterval);
+  let timer = duration;
+  const display = document.getElementById('timer-display');
+
+  timerInterval = setInterval(() => {
+    let minutes = parseInt(timer / 60, 10);
+    let seconds = parseInt(timer % 60, 10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    display.textContent = minutes + ":" + seconds;
+
+    if (--timer < 0) {
+      clearInterval(timerInterval);
+      alert("Hết thời gian làm bài! Hệ thống sẽ tự động nộp bài.");
+      submitExam();
+    }
+  }, 1000);
+}
+
+function submitExam(){
+  clearInterval(timerInterval);
+  let correctCount = 0;
+
+  examData.forEach(q => {
+    let userAns = userAnswers[q.num];
+    let isCorrect = false;
+
+    if(q.type === 'P1'){
+      if(userAns === q.correct) isCorrect = true;
+    } 
+    else if(q.type === 'P2'){
+      if(userAns && typeof userAns === 'object'){
+        let allSubCorrect = true;
+        q.correct.forEach((cVal, idx) => {
+          if(userAns[idx] !== cVal) allSubCorrect = false;
+        });
+        if(allSubCorrect) isCorrect = true;
+      }
+    } 
+    else if(q.type === 'P3'){
+      if(userAns){
+        let cleanAns = userAns.replace(/[^0-9a-zA-Z]/g, '').toLowerCase();
+        if(cleanAns === q.correct) isCorrect = true;
+      }
+    } 
+    else if(q.type === 'P4'){
+      if(userAns === q.correct) isCorrect = true;
+    }
+
+    q.isUserCorrect = isCorrect;
+    if(isCorrect) correctCount++;
+  });
+
+  let score = ((correctCount / totalExamQuestions) * 10).toFixed(1);
+  if(correctCount === totalExamQuestions) score = 10;
+
+  let resBox = document.getElementById('result-summary');
+  resBox.style.display = 'block';
+
+  let summaryHtml = `
+    <h2 style="margin:0 0 10px 0; color:#00e5ff; text-align:center;">KẾT QUẢ BÀI KIỂM TRA: ${score} / 10 ĐIỂM</h2>
+    <p style="text-align:center; font-size:15px; margin-bottom:15px;">Đúng ${correctCount} / ${totalExamQuestions} câu. Bấm vào từng câu dưới đây để xem lại chi tiết:</p>
+    <div class="result-grid">
+  `;
+
+  examData.forEach(q => {
+    let mark = q.isUserCorrect ? '🟢' : '🔴';
+    summaryHtml += `
+      <div class="res-item" onclick="scrollToQuestion(${q.num})">
+        Câu ${q.num} ${mark}
+      </div>
+    `;
+  });
+
+  summaryHtml += `</div>`;
+  resBox.innerHTML = summaryHtml;
+
+  scrollTo({top: resBox.offsetTop - 20, behavior: 'smooth'});
+}
+
+function scrollToQuestion(num){
+  let el = document.getElementById(`ex-q-${num}`);
+  if(el){
+    el.scrollIntoView({behavior: 'smooth', block: 'center'});
+    el.style.boxShadow = '0 0 20px #00e5ff';
+    setTimeout(() => el.style.boxShadow = '0 8px 30px #0008', 2000);
+  }
 }
 
 make1(); make2(); make3(); make4();
