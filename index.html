@@ -8,6 +8,67 @@
 *{box-sizing:border-box}
 body{margin:0;background:#020711;color:#eef7ff;font:14px Arial,sans-serif;min-height:100vh}
 canvas#bg{position:fixed;inset:0;z-index:-1}
+
+/* CSS Cho phần chọn môn học */
+#subject-select{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding:20px;
+}
+#subject-select h1{
+  font-size:clamp(24px,5vw,36px);
+  color:#fff;
+  text-shadow:0 0 18px #00dfff;
+  margin-bottom:30px;
+  text-align:center;
+}
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:15px;
+  width:min(1000px, 100%);
+}
+.sub-card{
+  background:#071425dd;
+  border-radius:16px;
+  padding:25px 15px;
+  text-align:center;
+  font-weight:bold;
+  font-size:15px;
+  box-shadow:0 8px 30px #0008;
+  backdrop-filter:blur(7px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:120px;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.sub-card.disabled{
+  border:2px solid #ff304e;
+  background:linear-gradient(145deg, #d32145, #690e23);
+  color:#fff;
+  opacity:0.8;
+  cursor:not-allowed;
+}
+.sub-card.active{
+  border:2px solid #00ff9a;
+  background:linear-gradient(145deg, #00d88c, #08785f);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 0 20px #00ff9a44;
+}
+.sub-card.active:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 30px #00ff9a88;
+}
+
+/* CSS Cho phần nội dung bài học */
+#main-content{
+  display:none; /* Ẩn mặc định */
+}
 header{text-align:center;padding:25px 12px 12px}
 h1{font-size:clamp(25px,7vw,42px);margin:5px;color:#fff;text-shadow:0 0 18px #00dfff}
 .sub{color:#8fa9c7}
@@ -37,39 +98,73 @@ h1{font-size:clamp(25px,7vw,42px);margin:5px;color:#fff;text-shadow:0 0 18px #00
 .small{font-size:12px;color:#8ea5be}
 .chart-container{margin-top:15px;background:#030b14;border:1px solid #1f4268;border-radius:12px;padding:15px;text-align:center;overflow-x:auto}
 .chart-canvas{background:#051120;border-radius:8px;max-width:100%;height:auto}
-@media(max-width:650px){.nav{grid-template-columns:1fr}.card{padding:12px}}
+
+@media(max-width:768px){
+  .subject-grid{grid-template-columns:repeat(2, 1fr);}
+}
+@media(max-width:650px){
+  .nav{grid-template-columns:1fr}
+  .card{padding:12px}
+  .subject-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 <canvas id="bg"></canvas>
-<header>
-  <h1>Ôn Tập Giữa Học Kì Địa Lí 10</h1>
-  <div class="sub">Bấm 🔑 để mở đáp án</div>
-  <div class="name">ĐẶNG VĂN PHÚ QUÝ <b>[ BIÊN SOẠN ĐÁP ÁN ]</b></div>
-</header>
-<main class="wrap">
-  <div class="nav">
-    <button class="on" onclick="pg(1,this)">📘 PHẦN I<br><span class="small">40 câu</span></button>
-    <button onclick="pg(2,this)">🧩 PHẦN II + III<br><span class="small">Đúng/Sai • Trả lời ngắn</span></button>
-    <button onclick="pg(3,this)">📊 PHẦN IV<br><span class="small">Tự luận</span></button>
+
+<!-- PHẦN CHỌN MÔN HỌC -->
+<div id="subject-select">
+  <h1>CHỌN MÔN HỌC ÔN TẬP</h1>
+  <div class="subject-grid">
+    <div class="sub-card active" onclick="selectSubject()">Ôn Tập Giữa Học Kì Địa Lí 10</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
+    <div class="sub-card disabled">CHƯA CẬP NHẬT MÔN HỌC</div>
   </div>
-  <section id="p1" class="page on">
-    <h2 class="title">Phần I — Trắc nghiệm nhiều phương án</h2>
-    <div id="one"></div>
-  </section>
-  <section id="p2" class="page">
-    <h2 class="title">Phần II — Đúng / Sai</h2>
-    <div id="two"></div>
-    <h2 class="title">Phần III — Trả lời ngắn</h2>
-    <div id="three"></div>
-  </section>
-  <section id="p3" class="page">
-    <h2 class="title">Phần IV — Tự luận</h2>
-    <div id="four"></div>
-  </section>
-</main>
+</div>
+
+<!-- PHẦN NỘI DUNG CHÍNH (GIAO DIỆN CŨ) -->
+<div id="main-content">
+  <header>
+    <h1>Ôn Tập Giữa Học Kì Địa Lí 10</h1>
+    <div class="name"><b>[ BIÊN SOẠN ĐÁP ÁN ]</b></div>
+  </header>
+  <main class="wrap">
+    <div class="nav">
+      <button class="on" onclick="pg(1,this)">📘 PHẦN I<br><span class="small">40 câu</span></button>
+      <button onclick="pg(2,this)">🧩 PHẦN II + III<br><span class="small">Đúng/Sai • Trả lời ngắn</span></button>
+      <button onclick="pg(3,this)">📊 PHẦN IV<br><span class="small">Tự luận</span></button>
+    </div>
+    <section id="p1" class="page on">
+      <h2 class="title">Phần I — Trắc nghiệm nhiều phương án</h2>
+      <div id="one"></div>
+    </section>
+    <section id="p2" class="page">
+      <h2 class="title">Phần II — Đúng / Sai</h2>
+      <div id="two"></div>
+      <h2 class="title">Phần III — Trả lời ngắn</h2>
+      <div id="three"></div>
+    </section>
+    <section id="p3" class="page">
+      <h2 class="title">Phần IV — Tự luận</h2>
+      <h1>Chúc tụi mày ôn tốt =))</h1>
+      <div id="four"></div>
+    </section>
+  </main>
+</div>
 
 <script>
+// Hàm xử lý khi chọn môn học
+function selectSubject(){
+  document.getElementById('subject-select').style.display = 'none';
+  document.getElementById('main-content').style.display = 'block';
+  scrollTo({top:0, behavior:'smooth'});
+}
+
 const Q=[
 ['Phương pháp khoanh vùng cho biết',['vùng phân bố của đối tượng riêng lẻ.','số lượng của đối tượng riêng lẻ.','tính phổ biến của đối tượng riêng lẻ.','cơ cấu của đối tượng riêng lẻ.'],'A'],
 ['Để thể hiện hướng di chuyển của gió trên bản đồ cần phải dùng phương pháp nào sau đây?',['Kí hiệu.','Chấm điểm.','Bản đồ biểu đồ.','Kí hiệu đường chuyển động.'],'D'],
